@@ -2,13 +2,13 @@ import React from 'react';
 
 function QuestionField({ question, answer, onChange, onSubmit }) {
     return (
-        <div className="QuestionForm">
-            <div>Question: {question}</div>
+        <div className="QuestionField">
+            <div className="QuestionField-question">Question: {question}</div>
             <input type="text"
+                className="QuestionField-input"
                 value={answer}
-                onChange={onChange}
-                className="QuestionForm-input" /> 
-            <button onClick={onSubmit}>Submit!</button>
+                onChange={onChange} /> 
+            <button className="QuestionField-submit" onClick={onSubmit}>Submit!</button>
         </div>
     );
 }
