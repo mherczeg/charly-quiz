@@ -9,6 +9,7 @@ export const SUBMIT_ANSWER = 'SUBMIT_ANSWER';
 export const GET_NEXT_QUESTION = 'GET_NEXT_QUESTION';
 export const GET_NEXT_QUESTION_SUCCESS = 'GET_NEXT_QUESTION_SUCCESS';
 export const GET_NEXT_QUESTION_ERROR = 'GET_NEXT_QUESTION_ERROR';
+export const PROGRESS_QUIZ = 'PROGRESS_QUIZ';
 
 export const START_TIMER = 'START_TIMER';
 export const STOP_TIMER = 'STOP_TIMER';
@@ -24,6 +25,7 @@ export const submitAnswer = () => ({ type: SUBMIT_ANSWER });
 export const getNextQuestion = () => ({ type: GET_NEXT_QUESTION });
 export const getNextQuestionSuccess = (question) => ({ type: GET_NEXT_QUESTION_SUCCESS, question });
 export const getNextQuestionError = (error) => ({ type: GET_NEXT_QUESTION_ERROR, error });
+export const progressQuiz = () => ({ type: PROGRESS_QUIZ });
 
 export const startTimer = () => ({ type: START_TIMER });
 export const stopTimer = () => ({ type: STOP_TIMER });

@@ -11,6 +11,7 @@ GET_NEXT_QUESTION_SUCCESS,
 START_TIMER,
 // STOP_TIMER,
 TICK_TIMER,
+PROGRESS_QUIZ,
 } from './quiz.actions';
 
 const initialState = {
@@ -37,7 +38,19 @@ export function quizReducer(state = initialState, action) {
             return { ...state, activeQuestion: null, answer: '', gamestate: GAMESTATE.LOADING };
 
         case GET_NEXT_QUESTION_SUCCESS: 
-            return { ...state, activeQuestion: action.quesion, questionIds: [ ...state.questionIds, action.question.id ] };
+            return { ...state, 
+                activeQuestion: action.question,
+                questionIds: [ ...state.questionIds, action.question.id ],
+                gamestate: GAMESTATE.ACTIVE,
+            };
+
+        case PROGRESS_QUIZ:
+            const points = state.points ? state.points*2 : 1;
+            return {
+                ...state,
+                points,
+                highScore: Math.max(points, state.highScore),
+            }
 
         case START_TIMER: 
             return { ...state, timer: 0, timerId: ++state.timerId };
