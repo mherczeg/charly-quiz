@@ -18,6 +18,7 @@ const initialState = {
     activeQuestion: null,
     answer: '',
     timer: 0,
+    timerId: 0,
     points: 0,
     gamestate: GAMESTATE.INITIAL,
 }
@@ -39,7 +40,7 @@ export function quizReducer(state = initialState, action) {
             return { ...state, activeQuestion: action.quesion, questionIds: [ ...state.questionIds, action.question.id ] };
 
         case START_TIMER: 
-            return { ...state, timer: 0 };
+            return { ...state, timer: 0, timerId: ++state.timerId };
 
         case TICK_TIMER: 
             return { ...state, timer: ++state.timer };
