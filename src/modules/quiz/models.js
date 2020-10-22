@@ -5,3 +5,6 @@ export const GAMESTATE = Object.freeze({
     LOST: 'LOST',
     LOADING: 'LOADING',
 });
+
+export const TIME_LIMIT = 30;
+export const QUESTION_LIMIT = 30;
