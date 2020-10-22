@@ -4,12 +4,9 @@ import {
 START,
 END,
 UPDATE_ANSWER,
-// SUBMIT_ANSWER,
 GET_NEXT_QUESTION,
 GET_NEXT_QUESTION_SUCCESS,
-// GET_NEXT_QUESTION_ERROR,
 START_TIMER,
-// STOP_TIMER,
 TICK_TIMER,
 PROGRESS_QUIZ,
 } from './quiz.actions';
@@ -22,14 +19,20 @@ const initialState = {
     timerId: 0,
     points: 0,
     gamestate: GAMESTATE.INITIAL,
+    highScore: 0,
 }
 
 export function quizReducer(state = initialState, action) {
     switch (action.type) {
         case START:
-            return { ...state, gamestate: GAMESTATE.ACTIVE };
+            return { ...state, points: 0, gamestate: GAMESTATE.ACTIVE };
         case END:
-            return { ...initialState, points: state.points, gamestate: action.gamestate };
+            return { 
+                ...initialState,
+                points: state.points,
+                gamestate: action.gamestate,
+                highScore: Math.max(state.points, state.highScore),
+            };
 
         case UPDATE_ANSWER:
             return { ...state, answer: action.answer };
