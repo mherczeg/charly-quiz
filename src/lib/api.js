@@ -1,10 +1,5 @@
 export function get(url) {
-    return fetch(url, {
-        headers: { 
-            method: 'GET',
-            mode: 'cors',
-        }
-    }).then((response) => response.json())
+    return fetch(url).then((response) => response.json())
     // .catch(() => {}) error handling would happen here;
 }
 
